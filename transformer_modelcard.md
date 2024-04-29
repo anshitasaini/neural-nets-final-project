@@ -6,16 +6,16 @@
 
 # Model Card for Jeopardy LSTM Model
 
-A bi-directional LSTM trained on a dataset of Jeopardy questions and their values to predict the value of a given Jeopardy question.
+A transformer trained on a dataset of Jeopardy questions and their values to predict the value of a given Jeopardy question.
 
 ## Model Details
 
 ### Model Description
 
-A bi-directional LSTM trained on a dataset of Jeopardy questions and their values to predict the value of a given Jeopardy question
+A transformer trained on a dataset of Jeopardy questions and their values to predict the value of a given Jeopardy question
 
 - **Developed by:** Anshita Saini, Nihita Sarma, Nishitha Vattikonda
-- **Model type:** Bi-Directional LSTM
+- **Model type:** Transformer
 - **Language(s) (NLP):** English
 - **License:** Other
 
@@ -60,7 +60,7 @@ First, the questions were extracted from the data, questions with values over 20
 
 #### Training Hyperparameters
 
-- **Training regime:** The model had a hidden size of 256. It was trained with an Adam optimizer with a learning rate of 0.001 and CrossEntropyLoss function for 100 epochs. 
+- **Training regime:** The model had 4 attention heads, 2 encoder and decoder layers, a dropout rate of 0.1, and a 128 dim FFN. It was trained with an Adam optimizer with a learning rate of 0.01 and CrossEntropyLoss function for 10 epochs. 
 
 ## Evaluation
 
@@ -76,7 +76,7 @@ Question category, value, and question length can all influence model behavior.
 This model was tested based on overall accuracy and accuracy by category.
 
 ### Results
-This model has a 23% testing accuracy.
+This model has a 19-23% testing accuracy.
 
 ## Model Examination
 To interpret model behavior, both categorical accuracies and average values per category were analyzed. The model's performance was also compared to that of an LR model trained on the same data
@@ -84,7 +84,7 @@ To interpret model behavior, both categorical accuracies and average values per 
 ## Technical Specifications
 
 ### Model Architecture and Objective
-This model is a bidirectional LSTM that takes in a question, gets a positional encoding from it, puts that through an LSTM layer, and puts that through a linear layer to get a value output.
+This model is a transformer model that takes in a question, gets an embedding from it, uses that to get a positional encoding, puts that through a Transformer layer, and puts that through a linear layer to get a value output.
 
 ### Compute Infrastructure
 No computer infastructure beyond an average laptop is needed for this model to be trained or run.
